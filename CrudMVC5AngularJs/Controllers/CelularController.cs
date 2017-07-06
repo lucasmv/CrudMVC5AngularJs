@@ -1,4 +1,5 @@
-﻿using CrudMVC5AngularJs.Models;
+﻿using CrudMVC5AngularJs.Context;
+using CrudMVC5AngularJs.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -10,7 +11,7 @@ namespace CrudMVC5AngularJs.Controllers
     [RoutePrefix("api/v1/public")]
     public class CelularController : ApiController
     {
-        private readonly CelularDbContext _db = new CelularDbContext();
+        private readonly EFContext _db = new EFContext();
 
         [HttpGet]
         [Route("Celulares")]

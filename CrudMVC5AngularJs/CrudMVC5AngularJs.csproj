@@ -143,11 +143,21 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CelularController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="EntityConfig\CelularConfig.cs" />
+    <Compile Include="EntityConfig\ContatoConfig.cs" />
+    <Compile Include="EntityConfig\OperadoraConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707062311330_Inicial.cs" />
+    <Compile Include="Migrations\201707062311330_Inicial.Designer.cs">
+      <DependentUpon>201707062311330_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Celular.cs" />
-    <Compile Include="Models\CelularDbContext.cs" />
+    <Compile Include="Context\EFContext.cs" />
+    <Compile Include="Models\Contato.cs" />
+    <Compile Include="Models\Operadora.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -973,6 +983,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707062311330_Inicial.resx">
+      <DependentUpon>201707062311330_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
