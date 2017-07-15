@@ -10,124 +10,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="~/lib/bootstrap/bootstrap.css" rel="stylesheet" />
-
-    <style>
-        .jumbotron {
-            width: 600px;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-            padding: 10px;
-        }
-
-        .table {
-            margin-top: 20px;
-        }
-
-            .table td {
-                text-align: center;
-            }
-
-            .table th {
-                text-align: center;
-            }
-
-        .form-control {
-            margin-bottom: 5px;
-        }
-
-        .selecionado {
-            background-color: yellow;
-        }
-
-        .negrito {
-            font-weight: bold;
-        }
-    </style>
+    <link href="~/lib/css/app.css" rel="stylesheet" />
 
     <script src="~/lib/angular/angular.js"></script>
     <script src="~/lib/angular/angular-messages.js"></script>
     <script src="~/lib/angular/angular-locale_pt-br.js"></script>
 
-    <script>
-        angular.module("listaTelefonica", ["ngMessages"]);
-        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope, $filter, $http) {
-            $scope.app = "Lista Telefonica";
-
-            $scope.contatos = [];
-            $scope.operadoras = [];
-
-            var carregarContatos = function () {
-
-                $http.get("/api/v1/public/contatos")
-                  .then(function (response) {
-                      $scope.contatos = response.data;
-                  }, function () {
-                      $scope.message = "Aconteceu um problema: " + response;
-                  });
-            };
-
-            var carregaOperadoras = function () {
-                $http.get("/api/v1/public/operadoras")
-                    .then(function (response) {
-                        $scope.operadoras = response.data;
-                    },function () {
-                        $scope.message = "Aconteceu um problema: " + response;
-                    });
-            };
-
-            carregarContatos();
-            carregaOperadoras();
-
-
-            $scope.adicionarContato = function (contato) {
-
-                contato.data = new Date();
-                contato.OperadoraId = contato.Operadora.Id;
-                contato.Operadora = null;
-
-                $http.post("/api/v1/public/postContato", contato)
-                    .then(function (response) {
-
-                        carregarContatos();
-                        carregaOperadoras();
-
-                        $scope.contato = {};
-                        $scope.contatoForm.$setPristine();
-
-                    }, function () {
-                        $scope.message = "Aconteceu um problema: " + response;
-                    })
-            };
-
-            $scope.apagarContatos = function (contatos) {
-
-                var contatos = contatos.filter(function (contato) {
-                    if (contato.selecionado) return contato;
-                });
-
-                $http.post("/api/v1/public/deleteContato/", contatos)
-                    .then(function (response) {
-                        carregarContatos();
-                    }, function (response) {
-                        $scope.message = "Aconteceu um problema: " + response.data;
-                    });         
-            };
-
-            $scope.isContatoSelecionado = function (contatos) {
-                return contatos.some(function (contato) {
-                    return contato.selecionado;
-                });
-            };
-
-            $scope.ordernarPor = function (campo) {
-                $scope.criterioDeOrdenacao = campo;
-                $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
-            };
-        });
-    </script>
-
+    <script src="~/lib/js/app.js"></script>
+    <script src="~/lib/js/controllers/listaTelefonicaCtrl.js"></script>
+    <script src="~/lib/js/services/contatoAPIService.js"></script>
+    <script src="~/lib/js/services/operadorasAPIService.js"></script>
+    <script src="~/lib/js/services/serialGeneratorService.js"></script>
+    <script src="~/lib/js/config/serialGeneratorConfig.js"></script>
+    <script src="~/lib/js/value/configValue.js"></script>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
@@ -138,6 +33,7 @@
         <table ng-show="contatos.length > 0" class="table table-bordered">
             <tr>
                 <th></th>
+                <th>Serial</th>
                 <th><a href="" ng-click="ordernarPor('nome')">Nome</a></th>
                 <th><a href="" ng-click="ordernarPor('telefone')">Telefone</a></th>
                 <th>Operadora</th>
@@ -146,11 +42,11 @@
             </tr>
             <tr ng-class="{ 'selecionado negrito': contato.selecionado }" ng-repeat="contato in contatos | filter: busca | orderBy: criterioDeOrdenacao:direcaoDaOrdenacao ">
                 <td><input type="checkbox" ng-model="contato.selecionado" /></td>
+                <td>{{ contato.Serial }}</td>
                 <td>{{ contato.Nome }}</td>
                 <td>{{ contato.Telefone }}</td>
                 <td>{{ contato.Operadora.Nome | lowercase }}</td>
                 <td>{{ contato.Data | date: 'dd/MM/yyyy HH:mm' }}</td>
-                <!--<td><div style="width:20px; height:20px;" ng-style="{'background-color': contato.cor}"></div></td>-->
             </tr>
         </table>
 
@@ -177,6 +73,6 @@
         </form>
     </div>
 
-    <!--<div ng-include="'footer.html'"></div>-->
+    <div ng-include="'lib/view/footer.html'"></div>
 </body>
 </html>
