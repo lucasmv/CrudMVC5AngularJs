@@ -9,5 +9,6 @@ namespace CrudMVC5AngularJs.Models
         public string Nome { get; set; }
         public int Codigo { get; set; }
         public string Categoria { get; set; }
+        public double Preco { get; set; }
     }
 }

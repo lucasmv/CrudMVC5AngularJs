@@ -13,7 +13,7 @@ namespace CrudMVC5AngularJs.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201707062311330_Inicial"; }
+            get { return "201707091847383_Inicial"; }
         }
         
         string IMigrationMetadata.Source

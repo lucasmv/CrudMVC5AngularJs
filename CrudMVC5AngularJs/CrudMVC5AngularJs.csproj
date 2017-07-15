@@ -142,16 +142,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CelularController.cs" />
+    <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OperadoraController.cs" />
     <Compile Include="EntityConfig\CelularConfig.cs" />
     <Compile Include="EntityConfig\ContatoConfig.cs" />
     <Compile Include="EntityConfig\OperadoraConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707062311330_Inicial.cs" />
-    <Compile Include="Migrations\201707062311330_Inicial.Designer.cs">
-      <DependentUpon>201707062311330_Inicial.cs</DependentUpon>
+    <Compile Include="Migrations\201707091847383_Inicial.cs" />
+    <Compile Include="Migrations\201707091847383_Inicial.Designer.cs">
+      <DependentUpon>201707091847383_Inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Celular.cs" />
@@ -169,6 +171,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="lib\angular\angular-locale_pt-br.js" />
+    <Content Include="lib\angular\angular-messages.js" />
+    <Content Include="lib\angular\angular.js" />
+    <Content Include="lib\bootstrap\bootstrap.css" />
+    <Content Include="lib\bootstrap\bootstrap.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -972,6 +979,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\Contatos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -985,8 +993,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707062311330_Inicial.resx">
-      <DependentUpon>201707062311330_Inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707091847383_Inicial.resx">
+      <DependentUpon>201707091847383_Inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

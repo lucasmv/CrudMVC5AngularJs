@@ -42,6 +42,7 @@ namespace CrudMVC5AngularJs.Migrations
                         Nome = c.String(maxLength: 50, unicode: false),
                         Codigo = c.Int(nullable: false),
                         Categoria = c.String(maxLength: 50, unicode: false),
+                        Preco = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

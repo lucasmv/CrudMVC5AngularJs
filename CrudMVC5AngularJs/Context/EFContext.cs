@@ -11,6 +11,8 @@ namespace CrudMVC5AngularJs.Context
         public DbSet<Operadora> Operadoras { get; set; }
         public DbSet<Contato> Contatos { get; set; }
 
+        public EFContext() : base("CrudMVC5Angular") { }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

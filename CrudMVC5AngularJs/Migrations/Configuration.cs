@@ -21,35 +21,40 @@ namespace CrudMVC5AngularJs.Migrations
             {
                 Nome = "Oi",
                 Codigo = 31,
-                Categoria = "Celular"
+                Categoria = "Celular",
+                Preco = 1
             };
 
             var operadora2 = new Operadora
             {
                 Nome = "Tim",
                 Codigo = 41,
-                Categoria = "Celular"
+                Categoria = "Celular",
+                Preco = 3
             };
 
             var operadora3 = new Operadora
             {
                 Nome = "Vivo",
                 Codigo = 15,
-                Categoria = "Celular"
+                Categoria = "Celular",
+                Preco = 2
             };
 
             var operadora4 = new Operadora
             {
                 Nome = "GVT",
                 Codigo = 15,
-                Categoria = "Fixo"
+                Categoria = "Fixo",
+                Preco = 1
             };
 
             var operadora5 = new Operadora
             {
                 Nome = "Embratel",
                 Codigo = 21,
-                Categoria = "Fixo"
+                Categoria = "Fixo",
+                Preco = 1
             };
 
             context.Operadoras.AddOrUpdate(operadora1, operadora2, operadora3, operadora4, operadora5);
