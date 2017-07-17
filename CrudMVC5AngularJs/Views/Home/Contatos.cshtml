@@ -23,6 +23,9 @@
     <script src="~/lib/js/services/serialGeneratorService.js"></script>
     <script src="~/lib/js/config/serialGeneratorConfig.js"></script>
     <script src="~/lib/js/value/configValue.js"></script>
+    <script src="~/lib/js/filters/nameFilter.js"></script>
+    <script src="~/lib/js/filters/ellipsisFilter.js"></script>
+
 </head>
 <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
@@ -43,9 +46,9 @@
             <tr ng-class="{ 'selecionado negrito': contato.selecionado }" ng-repeat="contato in contatos | filter: busca | orderBy: criterioDeOrdenacao:direcaoDaOrdenacao ">
                 <td><input type="checkbox" ng-model="contato.selecionado" /></td>
                 <td>{{ contato.Serial }}</td>
-                <td>{{ contato.Nome }}</td>
+                <td>{{ contato.Nome | name | ellipsis: 10 }}</td>
                 <td>{{ contato.Telefone }}</td>
-                <td>{{ contato.Operadora.Nome | lowercase }}</td>
+                <td>{{ contato.Operadora.Nome }}</td>
                 <td>{{ contato.Data | date: 'dd/MM/yyyy HH:mm' }}</td>
             </tr>
         </table>
@@ -73,6 +76,6 @@
         </form>
     </div>
 
-    <div ng-include="'lib/view/footer.html'"></div>
+    <div ng-include="'../lib/view/footer.html'"></div>
 </body>
 </html>

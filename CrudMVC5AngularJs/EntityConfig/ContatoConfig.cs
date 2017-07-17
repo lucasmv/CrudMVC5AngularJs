@@ -13,6 +13,7 @@ namespace CrudMVC5AngularJs.EntityConfig
 
             Property(x => x.Nome).HasMaxLength(50);
             Property(x => x.Telefone).HasMaxLength(50);
+            Property(x => x.Serial).HasMaxLength(20);
         }
     }
 }

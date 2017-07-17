@@ -11,6 +11,7 @@ namespace CrudMVC5AngularJs.Models
         public string Telefone { get; set; }
         public DateTime Data { get; set; }
         public int OperadoraId { get; set; }
+        public string Serial { get; set; }
 
         public Operadora Operadora { get; set; }
     }

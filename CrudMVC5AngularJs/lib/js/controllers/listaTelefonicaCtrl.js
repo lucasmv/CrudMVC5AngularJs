@@ -26,9 +26,6 @@
 
     carregarContatos();
     carregaOperadoras();
-    console.log('rrrrrr');
-    console.log(serialGenerator.generate());
-
 
     $scope.adicionarContato = function (contato) {
 
@@ -57,7 +54,7 @@
             if (contato.selecionado) return contato;
         });
 
-        $http.post("/api/v1/public/deleteContato/", contatos)
+        contatosAPI.apagarContatos(contatos)
             .then(function (response) {
                 carregarContatos();
             }, function (response) {
